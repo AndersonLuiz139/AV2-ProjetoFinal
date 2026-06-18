@@ -1,0 +1,147 @@
+### SoundList API — Exemplos de requisições
+### Compatível com IntelliJ IDEA HTTP Client e VS Code REST Client
+### Base URL: http://localhost:8080
+
+# =============================================================================
+# PLAYLISTS
+# =============================================================================
+
+### [1] Criar uma nova playlist (POST) → espera 201 Created
+POST http://localhost:8080/api/playlists
+Content-Type: application/json
+
+{
+  "name": "Minha Playlist Rock",
+  "description": "Seleção pessoal de rock"
+}
+
+---
+
+### [2] Criar playlist sem nome (POST) → espera 400 Bad Request (validação)
+POST http://localhost:8080/api/playlists
+Content-Type: application/json
+
+{
+  "name": "",
+  "description": "Sem nome"
+}
+
+---
+
+### [3] Listar todas as playlists — página 0, 5 por página (GET) → 200 OK
+GET http://localhost:8080/api/playlists?page=0&size=5&sort=name,asc
+
+---
+
+### [4] Buscar playlist por id (GET) → 200 OK
+GET http://localhost:8080/api/playlists/1
+
+---
+
+### [5] Buscar playlist inexistente (GET) → 404 Not Found
+GET http://localhost:8080/api/playlists/999
+
+---
+
+### [6] Atualizar playlist (PUT) → 200 OK
+PUT http://localhost:8080/api/playlists/1
+Content-Type: application/json
+
+{
+  "name": "Rock Clássico Atualizado",
+  "description": "Descrição atualizada"
+}
+
+---
+
+### [7] Deletar playlist e suas músicas em cascata (DELETE) → 204 No Content
+DELETE http://localhost:8080/api/playlists/3
+
+---
+
+# =============================================================================
+# MÚSICAS
+# =============================================================================
+
+### [8] Adicionar música a uma playlist (POST) → 201 Created
+POST http://localhost:8080/api/musics
+Content-Type: application/json
+
+{
+  "title": "Back in Black",
+  "artist": "AC/DC",
+  "genre": "Hard Rock",
+  "duration": 255,
+  "playlistId": 1
+}
+
+---
+
+### [9] Música com playlist inexistente (POST) → 404 Not Found
+POST http://localhost:8080/api/musics
+Content-Type: application/json
+
+{
+  "title": "Orphan Song",
+  "artist": "Nobody",
+  "genre": "Pop",
+  "duration": 180,
+  "playlistId": 999
+}
+
+---
+
+### [10] Música com validações inválidas (POST) → 400 Bad Request
+POST http://localhost:8080/api/musics
+Content-Type: application/json
+
+{
+  "title": "",
+  "artist": "",
+  "duration": -10,
+  "playlistId": null
+}
+
+---
+
+### [11] Listar músicas paginadas (GET) → 200 OK
+GET http://localhost:8080/api/musics?page=0&size=5&sort=title,asc
+
+---
+
+### [12] Buscar música por id (GET) → 200 OK
+GET http://localhost:8080/api/musics/1
+
+---
+
+### [13] Buscar música inexistente (GET) → 404 Not Found
+GET http://localhost:8080/api/musics/9999
+
+---
+
+### [14] Atualizar música (PUT) → 200 OK
+PUT http://localhost:8080/api/musics/1
+Content-Type: application/json
+
+{
+  "title": "Bohemian Rhapsody (Remaster)",
+  "artist": "Queen",
+  "genre": "Rock / Opera",
+  "duration": 360,
+  "playlistId": 1
+}
+
+---
+
+### [15] Deletar música (DELETE) → 204 No Content
+DELETE http://localhost:8080/api/musics/4
+
+---
+
+# =============================================================================
+# H2 Console (acesso via navegador)
+# URL:      http://localhost:8080/h2-console
+# JDBC URL: jdbc:h2:mem:soundlistdb
+# User:     sa
+# Password: (vazio)
+# =============================================================================
