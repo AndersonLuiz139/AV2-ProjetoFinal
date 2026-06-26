@@ -15,7 +15,6 @@ Content-Type: application/json
   "description": "Seleção pessoal de rock"
 }
 
----
 
 ### [2] Criar playlist sem nome (POST) → espera 400 Bad Request (validação)
 POST http://localhost:8080/api/playlists

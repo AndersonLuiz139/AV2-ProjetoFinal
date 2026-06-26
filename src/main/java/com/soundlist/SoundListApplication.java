@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Ponto de entrada da aplicação SoundList.
- *
+
  * @SpringBootApplication combina:
  *  - @Configuration       → classe de configuração Spring
  *  - @EnableAutoConfiguration → ativa a auto-configuração do Spring Boot
