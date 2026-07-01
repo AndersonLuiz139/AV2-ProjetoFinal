@@ -28,7 +28,7 @@ Content-Type: application/json
 ---
 
 ### [3] Listar todas as playlists — página 0, 5 por página (GET) → 200 OK
-GET http://localhost:8080/api/playlists?page=0&size=5&sort=name,asc
+GET http://localhost:8080/api/playlists?size=20
 
 ---
 
@@ -54,7 +54,7 @@ Content-Type: application/json
 ---
 
 ### [7] Deletar playlist e suas músicas em cascata (DELETE) → 204 No Content
-DELETE http://localhost:8080/api/playlists/3
+DELETE http://localhost:8080/api/playlists/2
 
 ---
 
@@ -104,7 +104,7 @@ Content-Type: application/json
 ---
 
 ### [11] Listar músicas paginadas (GET) → 200 OK
-GET http://localhost:8080/api/musics?page=0&size=5&sort=title,asc
+GET http://localhost:8080/api/musics?size=20
 
 ---
 
@@ -133,7 +133,7 @@ Content-Type: application/json
 ---
 
 ### [15] Deletar música (DELETE) → 204 No Content
-DELETE http://localhost:8080/api/musics/4
+DELETE http://localhost:8080/api/musics/9
 
 ---
 
